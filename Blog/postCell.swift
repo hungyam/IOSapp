@@ -72,13 +72,12 @@ struct postCell: View {
                 .foregroundColor(Color( red: 238/256, green: 238/256, blue: 238/256, opacity: 0.5))
                 .padding(.horizontal, -15)
         }
-        .padding(.horizontal, 15)
-        .padding(.top, 10)
+        .padding([.top, .leading, .trailing], 12.0)
     }
 }
 
 struct postCell_Previews: PreviewProvider {
     static var previews: some View {
-        postCell(post: postList.list[5])
+        postCell(post: postList.list[2])
     }
 }

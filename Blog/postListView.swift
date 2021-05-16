@@ -8,11 +8,23 @@
 import SwiftUI
 
 struct postListView: View {
+    init() {
+        UITableViewCell.appearance().selectionStyle = .none
+        UITableView.appearance().separatorStyle = .none
+    }
+    
+    
     var body: some View {
         List {
             ForEach(postList.list) { post in
-                postCell(post: post)
-                    .listRowInsets(EdgeInsets())
+                ZStack{
+                    postCell(post: post)
+                    NavigationLink(destination: postDetailView(post: post)){
+                        EmptyView()
+                    }
+                    .hidden()
+                }
+                .listRowInsets(EdgeInsets())
             }
         }
     }
@@ -20,6 +32,10 @@ struct postListView: View {
 
 struct postListView_Previews: PreviewProvider {
     static var previews: some View {
-        postListView()
+        NavigationView {
+            postListView()
+                .navigationBarTitle("hello")
+                .navigationBarHidden(true)
+        }
     }
 }
